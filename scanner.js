@@ -37,12 +37,12 @@ $.widget("ui.stockscanner", {
         return Math.sqrt(xMinuxXBarSquared/range.length);
     },
     _sharpe: function(range) {
-	var k = Math.sqrt(range.length);
-	var dailyReturns = $.map(range, function(element, index){
-		return index == 0 ? 1 : (element/range[index-1])-1;
-	});
-    var average = this._average(dailyReturns);
-	return k * (average / this._standardDev(dailyReturns, average));
+        var k = Math.sqrt(range.length);
+        var dailyReturns = $.map(range, function(element, index){
+            return index == 0 ? 1 : (element/range[index-1])-1;
+        });
+        var average = this._average(dailyReturns);
+        return k * (average / this._standardDev(dailyReturns, average));
     },
     _drawdowns: function(range) {
         var drawdowns = [];
@@ -82,31 +82,31 @@ $.widget("ui.stockscanner", {
                 var drawdowns = self._drawdowns(prices);
 
                 result = {
-		    'startdate':dates[1],
-		    'enddate':dates[dates.length - 1],
+                    'startdate':dates[1],
+                    'enddate':dates[dates.length - 1],
                     'symbol':symbol,
                     'sharpe':self._sharpe(excessReturn),
                     'drawdowns':drawdowns,
                     'maxdrawdown':self._max(drawdowns),
-		    'averagedrawdown':self._average(drawdowns)
+                    'averagedrawdown':self._average(drawdowns)
                 };
 
                 if (self.resultsTable === undefined) {
                     var resultsTable = $("<table>").addClass('results');
                     resultsTable.append(
                         $("<tr>").append(
-			    $("<th>").addClass('start-date').html("Start")
-			).append(
-			    $("<th>").addClass('end-date').html("End")
-			).append(
+                            $("<th>").addClass('start-date').html("Start")
+                        ).append(
+                            $("<th>").addClass('end-date').html("End")
+                        ).append(
                             $("<th>").addClass('symbol').html("Symbol")
                         ).append(
                             $("<th>").addClass('sharpe').html("Sharpe")
                         ).append(
                             $("<th>").addClass('maxdrawdown').html("Maximum Draw Down")
                         ).append(
-			    $("<th>").addClass('averagedrawdown').html("Average Draw Down")
-			)
+                            $("<th>").addClass('averagedrawdown').html("Average Draw Down")
+                        )
                     )
                     self.element.append(resultsTable);
                     self.resultsTable = self.element.find(".results");

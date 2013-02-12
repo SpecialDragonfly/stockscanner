@@ -40,12 +40,12 @@
         </script>
         <script type='text/html' id='resultRow'>
             <tr data-symbol='{{symbol}}' data-sharpe='{{sharpe}}' data-drawdown='{{maxdrawdown}}'>
-		<td class='start-date'>
-			{{startdate}}
-		</td>
-		<td class='end-date'>
-			{{enddate}}
-		</td>
+                <td class='start-date'>
+                    {{startdate}}
+                </td>
+                <td class='end-date'>
+                    {{enddate}}
+                </td>
                 <td class='symbol'>
                     {{symbol}}
                 </td>
@@ -60,9 +60,9 @@
                         {{/drawdowns}}
                     </div>
                 </td>
-		<td class='averagedrawdown'>
-			{{averagedrawdown}}
-		</td>
+                <td class='averagedrawdown'>
+                    {{averagedrawdown}}
+                </td>
             </tr>
         </script>
     </body>
