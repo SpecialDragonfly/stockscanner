@@ -41,7 +41,8 @@ $.widget("ui.stockscanner", {
 	var dailyReturns = $.map(range, function(element, index){
 		return index == 0 ? 1 : (element/range[index-1])-1;
 	});
-	return k * this._standardDev(dailyReturns, this._average(dailyReturns));
+    var average = this._average(dailyReturns);
+	return k * (average / this._standardDev(dailyReturns, average));
     },
     _drawdowns: function(range) {
         var drawdowns = [];
