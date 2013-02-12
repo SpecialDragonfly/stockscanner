@@ -1,0 +1,108 @@
+.controls {
+    
+	label, input, select {
+        
+		.inline-block;
+    
+	}
+
+}
+
+
+
+.maxdrawdown {
+    
+	.drawdowns {
+        
+		max-height:100px;
+        
+		display:none;
+    
+	}
+    
+	&:hover {
+        
+		.drawdowns {
+            
+			display:block;
+        
+			position:absolute;
+			background-color:white;
+			width:200px;
+			overflow-y:scroll;
+			border:1px solid black;
+		}
+    
+	}
+
+}
+
+
+
+.results {
+    
+	.zebra-stripe();
+    
+	td, th {
+        
+		border-left:1px solid black;
+        
+		border-right:1px solid black;
+    
+	}
+    
+	th {
+        
+		border-bottom:1px solid black;
+    
+	}
+    
+	width:100%;
+
+    
+	.symbol {
+    }
+
+   
+	.sharpe {
+
+    }
+
+    
+	.maxdrawdown {
+
+    }
+
+}
+
+
+
+.zebra-stripe(@stripe_color: #F0F0F0) {
+    
+	tbody tr:not(.headings):nth-child(2n+0) { 
+		background: @stripe_color; 
+	}
+
+	ul li:nth-child(2n+0) { 
+		background: @stripe_color; 
+	}
+    
+	ol li:nth-child(2n+0) { 
+		background: @stripe_color; 
+	}
+
+}
+
+
+
+.inline-block {
+    
+	display: -moz-inline-stack;
+    
+	display: inline-block;
+    
+	*display: inline;
+    
+	zoom: 1;
+
+}
