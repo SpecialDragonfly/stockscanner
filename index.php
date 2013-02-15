@@ -22,20 +22,23 @@
     </head>
     <body>
         <script type='text/html' id='queryForm'>
-            <div class='controls'>
-                <label>Start Date</label>
-                <input type='text' id='startDate' />
-                <label>End Date</label>
-                <input type='text' id='endDate' />
-                <label>Granularity</label>
-                <select id='granularity'>
-                    <option value='d'>Daily</option>
-                    <option value='m'>Monthly</option>
-                    <option value='y'>Yearly</option>
-                </select>
-                <label>Symbols</label>
-                <input type='text' id='symbols' />
-                <button id='getQuote'>Get</button>
+            <div class='navbar navbar-fixed-top'>
+                <div class='navbar-inner'>
+                    <a class='brand' href='/'>
+                        Stock Scanner
+                    </a>
+                    <form class='navbar-form pull-left form-inline'>
+                        <input type='text' id='startDate' placeholder='Start Date' />
+                        <input type='text' id='endDate' placeholder='End Date' />
+                        <select id='granularity'>
+                            <option value='d' selected='selected'>Daily</option>
+                            <option value='m'>Monthly</option>
+                            <option value='y'>Yearly</option>
+                        </select>
+                        <input type='text' id='symbols' placeholder='Symbols' />
+                        <button class='btn btn-primary' id='getQuote'>Get</button>
+                    </form>
+                </div>
             </div>
         </script>
         <script type='text/html' id='resultRow'>
@@ -45,6 +48,9 @@
                 </td>
                 <td class='end-date'>
                     {{enddate}}
+                </td>
+                <td class='granularity'>
+                    {{granularity}}
                 </td>
                 <td class='symbol'>
                     {{symbol}}

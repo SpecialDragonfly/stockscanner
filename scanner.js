@@ -16,7 +16,7 @@ $.widget("ui.stockscanner", {
         this.startDate.datepicker('setDate', "01/01/" + (today.getYear() + 1898));
         this.endDate.datepicker('setDate', today);
 
-        this.riskFreeRate = 0.01;
+        this.riskFreeRate = 0.00;
     },
     _getQuotes: function() {
         var symbols = this.symbolsList.val().split(",");
@@ -24,6 +24,8 @@ $.widget("ui.stockscanner", {
         for (var i = 0; i < symbols.length; i++) {
             self._getQuote(symbols[i].trim());
         }
+
+        return false;
     },
     _average: function(range) {
         return range.reduceRight(function(a, b) {
@@ -63,8 +65,10 @@ $.widget("ui.stockscanner", {
     _max: function(range) {
         return range.reduceRight(function(a, b){ return a > b ? a : b});
     },
+    resolution: {'d':'Day', 'm':'Month', 'y':'Year'},
     _getQuote: function(symbol) {
         var url = window.btoa(this._createUrl(symbol));
+        var granularity = this.resolution[this.granularity.val()];
         var self = this;
         $.ajax({
             'type':'GET',
@@ -84,6 +88,7 @@ $.widget("ui.stockscanner", {
                 result = {
                     'startdate':dates[1],
                     'enddate':dates[dates.length - 1],
+                    'granularity':granularity,
                     'symbol':symbol,
                     'sharpe':self._sharpe(excessReturn),
                     'drawdowns':drawdowns,
@@ -92,12 +97,14 @@ $.widget("ui.stockscanner", {
                 };
 
                 if (self.resultsTable === undefined) {
-                    var resultsTable = $("<table>").addClass('results');
+                    var resultsTable = $("<table>").addClass('results table');
                     resultsTable.append(
                         $("<tr>").append(
                             $("<th>").addClass('start-date').html("Start")
                         ).append(
                             $("<th>").addClass('end-date').html("End")
+                        ).append(
+                            $("<th>").addClass('granularity').html("Granularity")
                         ).append(
                             $("<th>").addClass('symbol').html("Symbol")
                         ).append(

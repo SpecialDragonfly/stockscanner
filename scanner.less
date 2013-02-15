@@ -1,108 +1,74 @@
-.controls {
-    
-	label, input, select {
-        
-		.inline-block;
-    
+.navbar {
+	.brand {
+		padding-left:30px;
 	}
 
+	.navbar-form {
+		float:right;
+		margin-right:10px;
+
+		input {
+			height:20px;
+			padding:4px;
+		}
+	}
 }
-
-
 
 .maxdrawdown {
-    
-	.drawdowns {
-        
-		max-height:100px;
-        
-		display:none;
-    
-	}
-    
-	&:hover {
-        
-		.drawdowns {
-            
-			display:block;
-        
-			position:absolute;
-			background-color:white;
-			width:200px;
-			overflow-y:scroll;
-			border:1px solid black;
-		}
-    
-	}
-
+    .drawdowns {
+        max-height:100px;
+        display:none;
+    }
+    &:hover {
+        .drawdowns {
+            display:block;
+            position:absolute;
+            background-color:white;
+            width:200px;
+            overflow-y:scroll;
+            border:1px solid black;
+        }
+    }
 }
-
-
 
 .results {
-    
-	.zebra-stripe();
-    
-	td, th {
-        
-		border-left:1px solid black;
-        
-		border-right:1px solid black;
-    
-	}
-    
-	th {
-        
-		border-bottom:1px solid black;
-    
-	}
-    
-	width:100%;
+	margin-top:50px;
+    .zebra-stripe();
 
-    
-	.symbol {
+    td, th {
+        border-left:1px solid black;
+        border-right:1px solid black;
     }
-
-   
-	.sharpe {
-
+    th {
+        border-bottom:1px solid black;
     }
+    width:100%;
 
-    
-	.maxdrawdown {
-
+    .symbol {
     }
-
+    .sharpe {
+    }
+    .maxdrawdown {
+    }
 }
-
-
 
 .zebra-stripe(@stripe_color: #F0F0F0) {
-    
-	tbody tr:not(.headings):nth-child(2n+0) { 
-		background: @stripe_color; 
-	}
+    tbody tr:not(.headings):nth-child(2n+0) {
+        background: @stripe_color;
+    }
 
-	ul li:nth-child(2n+0) { 
-		background: @stripe_color; 
-	}
-    
-	ol li:nth-child(2n+0) { 
-		background: @stripe_color; 
-	}
+    ul li:nth-child(2n+0) {
+        background: @stripe_color;
+    }
 
+    ol li:nth-child(2n+0) {
+        background: @stripe_color;
+    }
 }
 
-
-
 .inline-block {
-    
-	display: -moz-inline-stack;
-    
-	display: inline-block;
-    
-	*display: inline;
-    
-	zoom: 1;
-
+    display: -moz-inline-stack;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
 }
